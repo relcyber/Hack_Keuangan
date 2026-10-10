@@ -1,0 +1,448 @@
+/* ============ TOKEN WARNA ============ */
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  --bg: #f3f5fb;
+  --card: #fff;
+  --tx: #1b1f24;
+  --mu: #6b7480;
+  --bd: #e3e6ea;
+  --ac: #2563eb;
+  --ok: #16a34a;
+  --bad: #dc2626;
+  --g1: #2563eb;
+  --g2: #7c3aed;
+  --sh: 0 4px 18px rgba(30, 41, 90, 0.08);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1117;
+    --card: #161c26;
+    --tx: #e8ebef;
+    --mu: #8b95a1;
+    --bd: #2a323c;
+    --ac: #60a5fa;
+    --ok: #4ade80;
+    --bad: #f87171;
+    --sh: 0 4px 18px rgba(0, 0, 0, 0.35);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1117;
+  --card: #161c26;
+  --tx: #e8ebef;
+  --mu: #8b95a1;
+  --bd: #2a323c;
+  --ac: #60a5fa;
+  --ok: #4ade80;
+  --bad: #f87171;
+  --sh: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* ============ DASAR ============ */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--tx);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 16px;
+}
+h1 {
+  font-size: 20px;
+  margin: 4px 0 12px;
+}
+h2 {
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+
+nav {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+  overflow-x: auto;
+}
+nav button {
+  border: 1px solid var(--bd);
+  background: var(--card);
+  color: var(--tx);
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  white-space: nowrap;
+}
+nav button.on {
+  background: var(--ac);
+  color: #fff;
+  border-color: var(--ac);
+}
+.ic {
+  display: none;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--bd);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 14px;
+  box-shadow: var(--sh);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+.stat small {
+  color: var(--mu);
+  display: block;
+}
+.stat b {
+  font-size: 20px;
+}
+
+.row {
+  margin-bottom: 12px;
+}
+.row .t {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.row small {
+  color: var(--mu);
+}
+.bar {
+  height: 8px;
+  background: var(--bd);
+  border-radius: 99px;
+  overflow: hidden;
+  margin: 4px 0 2px;
+}
+.bar i {
+  display: block;
+  height: 100%;
+  background: var(--ac);
+  border-radius: 99px;
+  transition: width 0.4s;
+}
+
+.wrap {
+  overflow-x: auto;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 560px;
+}
+th,
+td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid var(--bd);
+}
+th {
+  color: var(--mu);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+input,
+select {
+  font: inherit;
+  color: var(--tx);
+  background: var(--bg);
+  border: 1px solid var(--bd);
+  border-radius: 10px;
+  padding: 8px;
+  width: 100%;
+}
+input:focus,
+select:focus {
+  outline: 2px solid var(--ac);
+  outline-offset: 1px;
+}
+form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+  align-items: end;
+}
+label {
+  font-size: 12px;
+  color: var(--mu);
+  display: block;
+  margin-bottom: 2px;
+}
+.btn {
+  background: var(--ac);
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: 9px 14px;
+  cursor: pointer;
+  font: inherit;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.del {
+  background: none;
+  border: 0;
+  color: var(--bad);
+  cursor: pointer;
+  font-size: 16px;
+}
+.neg {
+  color: var(--bad);
+}
+.pos {
+  color: var(--ok);
+}
+.hide {
+  display: none;
+}
+
+/* ============ TAMPILAN HP ============ */
+@media (max-width: 640px) {
+    main{padding:14px 14px calc(100px + env(safe-area-inset-bottom,0px))}
+  h1 {
+    font-size: 19px;
+    margin-bottom: 14px;
+  }
+  h1 small {
+    display: block;
+    font-size: 13px;
+  }
+
+  /* input nyaman di HP (16px = iPhone tidak zoom otomatis) */
+  input,
+  select {
+    font-size: 16px;
+    padding: 12px;
+  }
+  .btn {
+    width: 100%;
+    padding: 13px;
+    font-weight: 600;
+  }
+  form {
+    grid-template-columns: 1fr;
+  }
+  table {
+    min-width: 0;
+  }
+
+  /* ---- Kartu ringkasan (hero gradient) ---- */
+  #stats {
+    background: linear-gradient(135deg, var(--g1), var(--g2));
+    border: 0;
+    border-radius: 22px;
+    padding: 18px;
+    gap: 14px 10px;
+    grid-template-columns: 1fr 1fr;
+    color: #fff;
+    box-shadow: 0 10px 28px rgba(79, 70, 229, 0.35);
+  }
+  #stats .stat small {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 12px;
+  }
+  #stats .stat b {
+    color: #fff;
+    font-size: 17px;
+  }
+  #stats .stat:last-child {
+    grid-column: 1/-1;
+    order: -1;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  }
+  #stats .stat:last-child b {
+    font-size: 30px;
+    letter-spacing: -0.5px;
+  }
+  #stats .neg {
+    color: #fecaca;
+  }
+
+  /* ---- Kategori: kartu berwarna ---- */
+  #cats .row {
+    --c: var(--ac);
+    background: var(--bg);
+    border-radius: 14px;
+    padding: 12px 12px 10px;
+    border-left: 5px solid var(--c);
+    margin-bottom: 10px;
+  }
+  #cats .row:nth-child(1) {
+    --c: #2563eb;
+  }
+  #cats .row:nth-child(2) {
+    --c: #f59e0b;
+  }
+  #cats .row:nth-child(3) {
+    --c: #10b981;
+  }
+  #cats .row:nth-child(4) {
+    --c: #8b5cf6;
+  }
+  #cats .row:nth-child(5) {
+    --c: #ec4899;
+  }
+  #cats .bar {
+    height: 10px;
+  }
+  #cats .bar i {
+    background: var(--c);
+  } /* merah otomatis kalau melebihi (style inline dari JS) */
+  #cats .t span {
+    font-size: 13px;
+    color: var(--mu);
+  }
+
+  /* ---- Navigasi bawah melayang ---- */
+  nav{
+    position:fixed;
+    left:12px;
+    right:12px;
+    bottom:calc(10px + env(safe-area-inset-bottom,0px));
+    top:auto;
+    margin:0;
+    z-index:50;
+    gap:4px;
+    overflow:visible;
+    transform:translateZ(0);                 
+    
+    /* menjaga posisi tetap stabil saat scroll di HP */
+    background:color-mix(in srgb,var(--card) 90%,transparent);
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+    border:1px solid var(--bd);border-radius:22px;
+    padding:6px;box-shadow:0 8px 30px rgba(0,0,0,.18);
+  }
+  nav button{
+    flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;
+    border:0;border-radius:16px;padding:7px 2px;font-size:11px;
+    background:none;color:var(--mu);transition:background .2s,color .2s;
+  }
+  nav button.on{background:var(--ac);color:#fff;font-weight:600}
+  nav .ic{display:block;font-size:19px;line-height:1}
+  /* ---- Tabel pengeluaran -> kartu ---- */
+  .card.wrap {
+    padding: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+    overflow: visible;
+  }
+  #p-out table,
+  #p-out table tbody {
+    display: block;
+    width: 100%;
+  }
+  #p-out table thead {
+    display: none;
+  }
+  #p-out table tr {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 10px;
+    row-gap: 2px;
+    background: var(--card);
+    border: 1px solid var(--bd);
+    border-radius: 16px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    box-shadow: var(--sh);
+  }
+  #p-out table td {
+    display: block;
+    border: 0;
+    padding: 0;
+    text-align: left;
+  }
+  #p-out table td:nth-child(2) {
+    grid-column: 1;
+    grid-row: 1;
+    font-weight: 600;
+    font-size: 16px;
+  } /* deskripsi */
+  #p-out table td:nth-child(4) {
+    grid-column: 2;
+    grid-row: 1;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--bad);
+    text-align: right;
+  } /* nominal */
+  #p-out table td:nth-child(1) {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 12px;
+    color: var(--mu);
+  } /* tanggal */
+  #p-out table td:nth-child(3) {
+    /* kategori = chip */
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+    font-size: 12px;
+    font-weight: 600;
+    background: color-mix(in srgb, var(--ac) 14%, transparent);
+    color: var(--ac);
+    padding: 2px 10px;
+    border-radius: 99px;
+  }
+  #p-out table td:nth-child(5),
+  #p-out table td:nth-child(6) {
+    grid-column: 1/-1;
+    font-size: 13px;
+    color: var(--mu);
+    margin-top: 4px;
+  }
+  #p-out table td:nth-child(5)::before {
+    content: "Metode: ";
+  }
+  #p-out table td:nth-child(6)::before {
+    content: "Catatan: ";
+  }
+  #p-out table td:nth-child(5):empty,
+  #p-out table td:nth-child(6):empty {
+    display: none;
+  }
+  #p-out table td:nth-child(7) {
+    grid-column: 1/-1;
+    text-align: right;
+    margin-top: 6px;
+  }
+  #p-out table td:nth-child(7) .del {
+    font-size: 13px;
+    padding: 4px 10px;
+    border: 1px solid var(--bd);
+    border-radius: 99px;
+  }
+  #p-out table td:nth-child(7) .del::after {
+    content: " Hapus";
+    font-size: 12px;
+  }
+  #p-out table td[colspan] {
+    grid-column: 1/-1;
+    grid-row: auto;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px;
+  }
+}
